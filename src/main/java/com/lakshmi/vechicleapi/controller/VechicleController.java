@@ -13,31 +13,10 @@ import java.util.Map;
 @RestController
 public class VechicleController {
 
-    // Field dependency injection*/
-   /* @Autowired
-    VechicleService vechicleService;
-
 
     // constructor dependency injection
-   /* private VechicleService vechicleService;
+    private VechicleService vechicleService;
     public VechicleController(VechicleService vechicleService) {
-        this.vechicleService = vechicleService;
-    }*/
-
-
-    // setter dependency injection
-   /* private VechicleService vechicleService;
-     @Autowired
-    public void setVechicleService(VechicleService vechicleService) {
-        this.vechicleService = vechicleService;
-    }*/
-
-
-    //(any) method dependency injection
-   private VechicleService vechicleService;
-    @Autowired
-   // @Qualifier
-    public void vechiclemethods(VechicleService vechicleService) {
         this.vechicleService = vechicleService;
     }
 
@@ -70,6 +49,29 @@ public class VechicleController {
         }
         return new ResponseEntity("No data", HttpStatus.NOT_FOUND);
     }
+
+
+
+    @PatchMapping("/vechicles/editVehicle/{id}")
+    public ResponseEntity updateVechicle(@RequestBody Vehicle vehicle,@PathVariable("id") Integer id ){
+
+        vechicleService.updateVechicle(id, vehicle);
+        if (vehicle != null) {
+            return new ResponseEntity(vehicle, HttpStatus.OK);
+        }
+        return new ResponseEntity("No data", HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/vechicles/updateVehicle")
+    public ResponseEntity updateVechicle(@RequestBody Vehicle vehicle){
+
+        vechicleService.updateVechicle(vehicle);
+        if (vehicle != null) {
+            return new ResponseEntity(vehicle, HttpStatus.OK);
+        }
+        return new ResponseEntity("No data", HttpStatus.NOT_FOUND);
+    }
+
 
 
     @DeleteMapping("/vechicles/deleteVehicle/{id}")

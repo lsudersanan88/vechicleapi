@@ -17,7 +17,6 @@ public class VechicleServiceImpl implements VechicleService{
 
    @Override
    public Map<Integer, Vehicle> getallVechicles() {
-     // return vechicleRepository.addData();
       return vechicleRepository.getAll();
    }
 
@@ -37,12 +36,12 @@ public class VechicleServiceImpl implements VechicleService{
    }
 
    @Override
-   public void updateVechicle(Integer id) {
-
+   public void updateVechicle(Integer id, Vehicle vehicle) {
+   vechicleRepository.updateVechicle(id,vehicle);
    }
 
    @Override
    public Vehicle updateVechicle(Vehicle vechicle) {
-      return null;
+      return vechicleRepository.updateVechicle(vechicle);
    }
 }

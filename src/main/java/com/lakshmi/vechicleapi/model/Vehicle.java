@@ -1,9 +1,5 @@
 package com.lakshmi.vechicleapi.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-
 public class Vehicle {
 
 	private Integer Id;
